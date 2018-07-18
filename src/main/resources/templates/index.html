@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+        这里是取出对象中的属性值
+      <h1 th:text="${users.username}">Hello World</h1><br />
+        这里是取出集合对象中所有值：即取所有
+      <h1 th:text="${list}">Hello World</h1><br />
+
+            这里开始就是遍历集合，并且是遍历值时判断是第几个就不输出来：
+        <tr th:each="wen:${list}"><br /><td th:if="${wen != '我是第1个'}" th:text="${wen}"></td></tr>
+            <br />
+
+        <br /><br />
+        <!--渲染-->
+      这个是提取渲染：<div><h1 th:utext="${users.age}"></h1></div><br /><br />
+
+        <!-- 时间日期格式转换-->
+      这里开始时间格式转换：<td th:text="${#dates.format(users.birthday,'yyyy-MM-dd HH:mm:ss')}"  ></td><br /><br /><br />
+
+        <!-- 将值放进按钮中-->
+        这个是下拉菜单，遍历集合，成下拉菜单:<br />
+      <select>
+          <option value="">请选择</option>
+          <option th:each="lists:${list}" th:text="${lists}"></option>
+      </select>
+
+
+</body>
+</html>
